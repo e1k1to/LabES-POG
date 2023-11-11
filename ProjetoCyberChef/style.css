@@ -1,0 +1,97 @@
+.cabecalho {
+	background-color: #ffeab5;
+	text-align: left;
+	font-size: 45px;
+	height: 200px;
+	width:100%;
+	border: 1px solid #e1dfce;
+}
+body {
+	margin:0;
+}
+.titulo {
+	font-family: cursive;
+	margin:0;
+	padding-top: 50px;
+	padding-left: 5%;
+	display: inline-block;
+}
+.teste {
+	font-size: 25px;
+	display: inline-block;
+	padding-left: 20px;
+	align-items: center;
+}
+
+li { 
+	display: inline-block;
+
+}
+
+a {
+	text-decoration: none;
+}
+
+.subcaixa {
+	background-color: #fff0c9;
+	height: 175px;
+	margin-top: 30px;
+	width: 60%;
+	font-size: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+}
+.fill-div {
+	display: block;
+	width:100%;
+	height:100%;
+	text-decoration: none;
+}
+
+.caixa-receita {
+	display: flex;
+	height: auto;
+	width: auto;
+}
+
+
+.imagem {
+	height: 175px;
+	float: left;
+}
+
+img {
+	height: 90%;
+	border-radius: 30px;
+	margin: 7.5px;
+	vertical-align: middle;
+	width: auto;
+}
+
+
+.txtRec {
+	width: 100%;
+	text-align: center;
+}
+
+.tituloRec {
+	font-size: 26px;
+}
+.descricaoRec {
+	font-size: 18px;
+	margin-top: -10px;
+}
+.titu-res {
+	font-size: 50px;
+	text-align: center;
+	font-style: italic;
+	font-weight: 500;
+
+}
+.texto-fim {
+	font-size: 40px;
+	text-align: center;
+	font-style: italic;
+	font-weight: 200;
+}

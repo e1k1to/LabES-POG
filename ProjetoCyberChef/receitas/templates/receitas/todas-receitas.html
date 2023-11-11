@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Todas as Receitas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+        crossorigin="anonymous" />
+</head>
+<style>
+    .cabecalho {
+        background-color: #ffeab5;
+        text-align: left;
+        font-size: 45px;
+        height: 200px;
+        width: 100%;
+        border: 1px solid #e1dfce;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .titulo-cabecalho {
+        font-family: cursive;
+        margin: 0;
+        padding-top: 50px;
+        padding-left: 5%;
+        display: inline-block;
+        font-weight: 300;
+    }
+
+    .navb {
+        font-size: 25px;
+        display: inline-block;
+        padding-left: 20px;
+        align-items: center;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .flex-cont>div {
+        margin: 5px;
+        border-radius: 10px;
+        height: 600px;
+        width: 100%;
+        background-color: #fff4e2;
+    }
+
+    img {
+        height: 90%;
+        border-radius: 30px;
+        margin: 8px;
+        vertical-align: middle;
+        width: auto;
+    }
+
+    label {
+        display: flex;
+    }
+
+    .card {
+        width: 18rem;
+        margin-right: 30px;
+    }
+
+    .card img {
+        width: 92%; /* Ajuste para garantir que a imagem ocupe 100% da largura do card */
+        height: auto; /* Garante que a altura seja ajustada automaticamente para manter a proporção */
+    }
+</style>
+
+<body>
+    <div class="cabecalho">
+        <h1 class="titulo-cabecalho">CyberChef</h1>
+        <nav class="navb">
+            <ul>
+                <li><a href="/">Home .</a></li>
+                <li><a href="/">Buscar Receitas .</a></li>
+                <li><a href="/todas">Todas Receitas .</a></li>
+                <li><a href="/enviar">Enviar Receitas .</a></li>
+                <li><a href="/contato">Fale conosco </a></li>
+            </ul>
+        </nav>
+    </div>
+    <br>
+    <h1 class="text-center p-2 d-block">
+        Todas as Receitas
+    </h1>
+    <div class="container d-flex flex-row flex-wrap justify-content-center">
+    {% for receita in receitas %}
+        <div class="card">
+            <img src="{{ receita.foto.url }}" class="card-img-top" alt="">
+            <div class="card-body">
+
+                <h5 class="card-title">{{ receita.titulo }}</h5>
+                <a href="{% url 'detalhe_receita' receita.id %}" class="btn btn-primary">Veja Mais Aqui!</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Receita</title>
+    <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <style>
+        *, *:before, *:after {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: #384047;
+        }
+
+        form {
+            max-width: 480px;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background: #f4f7f8;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin: 0 0 30px 0;
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        input[type="password"] {
+            border: none;
+            font-size: 16px;
+            height: auto;
+            outline: 0;
+            padding: 15px;
+            width: 100%;
+            background: #e8eeef;
+            color: #8a97a0;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+            margin: 0 0 30px;
+            border-radius: 4px;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button {
+            padding: 19px 39px 18px 39px;
+            color: #000000;
+            background-color: #ffff00;
+            font-size: 18px;
+            text-align: center;
+            font-style: normal;
+            border-radius: 5px;
+            width: 100%;
+            border-width: 1px 1px 3px;
+            box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        fieldset {
+            margin-bottom: 30px;
+            border: none;
+        }
+
+        legend {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .number {
+            background-color: #ffff00;
+            color: #000000;
+            height: 30px;
+            width: 30px;
+            display: inline-block;
+            font-size: 0.8em;
+            margin-right: 4px;
+            line-height: 30px;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-radius: 100%;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+{% include 'receitas/header.html' %}
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1>Enviar Receita</h1>
+
+            <fieldset>
+
+                <legend><span class="number">1</span> Informações Básicas</legend>
+
+                <label for="name">Título:</label>
+                <input type="text" id="name" name="titulo">
+
+                <label for="email">Ingredientes:</label>
+                <label for="mail"></label><textarea id="mail" name="ingredientes"></textarea>
+
+                <label for="bio">Modo de Preparo:</label>
+                <textarea id="bio" name="modopreparo"></textarea>
+
+                <legend><span class="number">2</span> Valores Nutricionais</legend>
+
+                <label for="calorias">Calorias (Kcal):</label>
+                <input type="text" id="calorias" name="calorias">
+
+                <label for="proteina">Proteína (g):</label>
+                <input type="text" id="proteina" name="proteina">
+
+                <label for="carboidrato">Carboidrato (g):</label>
+                <input type="text" id="carboidrato" name="carboidrato">
+
+                <label for="fibra">Fibra (g):</label>
+                <input type="text" id="fibra" name="fibra">
+
+                <label for="sodio">Sódio (Mg):</label>
+                <input type="text" id="sodio" name="sodio">
+
+                <label for="imagem">Imagem:</label>
+                <input type="file" id="imagem" name="foto">
+
+            </fieldset>
+
+            <button type="submit">Enviar Receita</button>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

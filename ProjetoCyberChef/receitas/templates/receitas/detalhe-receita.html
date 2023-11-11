@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title> Detalhes Receita</title>
+    </head>
+	<style>
+	.cabecalho {
+	background-color: #ffeab5;
+	text-align: left;
+	font-size: 45px;
+	height: 200px;
+	width:100%;
+	border: 1px solid #e1dfce;
+}
+body {
+	margin:0;
+}
+.titulo {
+	font-family: cursive;
+	margin:0;
+	padding-top: 50px;
+	padding-left: 5%;
+	display: inline-block;
+}
+.teste {
+	font-size: 25px;
+	display: inline-block;
+	padding-left: 20px;
+	align-items: center;
+}
+
+li {
+	display: inline-block;
+
+}
+
+a {
+	text-decoration: none;
+}
+
+.corpo {
+	width: 99%;
+	padding: 10px;
+	background-color: #fff0c9;
+	margin: 10px;
+	border-radius: 20px;
+	position: absolute;
+}
+
+.imgm {
+	border-radius: 20px;
+	background-color: black;
+	width: 500px;
+	height: 300px;
+}
+
+.imgm img {
+	height: 100%;
+	width: 100%;
+}
+
+.titulorec {
+	padding: 5px;
+	margin: 10px;
+	font-family: cursive;
+	font-size: 50px;
+}
+.ingredientes {
+	font-style: italic;
+}
+
+.titaval {
+	font-style: italic;
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+.buto {
+	width: 100px;
+}
+
+.valnutri {
+	font-style: italic;
+	font-weight: 300;
+}
+   </style>
+    <body>
+        <div class="cabecalho">
+            <h1 class="titulo">CyberChef</h1>
+            <nav class="teste">
+                <ul>
+                <li><a href="/"> Home </a></li> ·
+                <li><a href="/"> Buscar Receitas </a></li> ·
+                <li><a href="/todas"> Todas Receitas </a></li> ·
+                <li><a href="/enviar"> Enviar Receitas </a></li> ·
+                <li><a href="/contato"> Fale conosco </a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="corpo">
+            <h1 class="titulorec">
+                {{ receita.titulo }}
+            </h1>
+            <div class="imgm">
+				<img src="{{ receita.foto.url }}" alt="{{ receita.titulo }}">
+            </div>
+            <p class="ingredientes">
+                <strong>Ingredientes:</strong>
+                {{ receita.ingredientes | linebreaks }}
+            </p>
+            <p class="modopreparo">
+                <strong> Modo de preparo: </strong>
+				{{ receita.modopreparo | linebreaks }}
+            </p>
+            <div class="avaliacao">
+                <p class="titaval"> Avalie esta receita: </p>
+                <label>
+                    <input type="radio" name="avaliacao" value="1">
+                </label> Horrível
+                <label>
+                    <input type="radio" name="avaliacao" value="2">
+                </label> Ruim
+                <label>
+                    <input type="radio" name="avaliacao" value="3">
+                </label> OK
+                <label>
+                    <input type="radio" name="avaliacao" value="4">
+                </label> Bom
+                <label>
+                    <input type="radio" name="avaliacao" value="5">
+                </label> Ótimo
+                <button class="buto"> Enviar </button>
+            </div>
+
+            <p class="valnutri">
+                <strong>Valores nutricionais:</strong>
+                <br>
+                Calorias: {{ receita.calorias }} (Kcal)
+				Carboidratos: {{ receita.carboidrato }} (g)
+				Proteínas: {{ receita.proteina }} (g)
+				Fibras: {{ receita.fibra }} (g)
+				Sódio: {{ receita.sodio }} (Mg)
+            </p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<meta charset="UTF-8">
+<style>
+
+.titorec {
+    margin-top: 200px;
+}
+.cabecalho {
+	background-color: #ffeab5;
+	text-align: left;
+	font-size: 45px;
+	height: 200px;
+	width:100%;
+	border: 1px solid #e1dfce;
+}
+body {
+	margin:0;
+}
+.titulo {
+	font-family: cursive;
+	margin:0;
+	padding-top: 50px;
+	padding-left: 5%;
+	display: inline-block;
+	font-weight: 300;
+}
+.navb {
+	font-size: 25px;
+	display: inline-block;
+	padding-left: 20px;
+	align-items: center;
+}
+
+li {
+	display: inline-block;
+
+}
+
+a {
+	text-decoration: none;
+}
+
+.flex-cont {
+	margin-top: 10px;
+	display: flex;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.flex-cont > div {
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 10px;
+	height: 600px;
+	width: 100%;
+	background-color: #fff4e2;
+}
+
+.titulo-caixa {
+	font-size: 40px;
+	font-weight: 300;
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 0;
+}
+.subtitulo-caixa {
+	font-size: 20px;
+	font-weight: 300;
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.subsubtitulo-caixa {
+	font-size: 14px;
+	font-weight: 300;
+	font-style: italic;
+	text-align: center;
+	margin-top: 0;
+}
+
+.subcaixa {
+	background-color: #fff0c9;
+	height: 175px;
+	width: 97.5%;
+	font-size: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+}
+.caixa-receita {
+	display: flex;
+	height: auto;
+	width: auto;
+}
+
+.imagem {
+	height: 175px;
+	float: left;
+}
+
+img {
+	height: 90%;
+	border-radius: 30px;
+	margin: 7.5px;
+	vertical-align: middle;
+	width: auto;
+}
+
+.txtRec {
+	width: 100%;
+	text-align: center;
+}
+
+.tituloRec {
+	font-size: 26px;
+}
+
+.descricaoRec {
+	font-size: 18px;
+	margin-top: -10px;
+}
+
+#ingredientes {
+	display: block;
+	margin: auto;
+	border-radius: 8px;
+	border-width: 1px;
+	width: 60%;
+	padding: 5px;
+	margin-top: -10px;
+}
+
+.labesq {
+	margin-left: 25%;
+	font-size: 22px;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.impnum {
+	width: 50px;
+	float: left;
+	font-weight: 300;
+}
+
+label {
+	display: flex;
+}
+
+.butpos {
+	margin-top: 2%;
+	width: 80%;
+	height: 150px;
+	font-size: 30px;
+	font-style: italic;
+	font-weight: 300;
+	border-radius: 100px;
+	background-color: #ffeab5;
+	border-width: 0;
+	text-align: center;
+	margin-left: 10%;
+	margin-right: auto;
+	cursor: pointer;
+}
+.butpos:hover {
+	background-color: #ffe39c;
+}
+.descbut {
+	font-size: 14px;
+	margin-top: 2px;
+	font-weight:300;
+	font-style: italic;
+	text-align: center;
+}
+
+.fill-div {
+	display: block;
+	width:100%;
+	height:100%;
+	text-decoration: none;
+}
+</style>
+<body>
+  <div class="cabecalho">
+    <h1 class="titulo">CyberChef</h1>
+    <nav class="navb">
+      <ul>
+        <li><a href="/">Home .</a></li>
+        <li><a href="/todas">Buscar Receitas .</a></li>
+        <li><a href="/todas">Todas Receitas .</a></li>
+        <li><a href="/enviar">Enviar Receitas .</a></li>
+        <li><a href="/contato">Fale conosco</a></li>
+      </ul>
+    </nav>
+  </div>
+<div class="flex-cont">
+
+    <div>
+        <p class="titulo-caixa">Receitas populares da semana</p>
+        {% for receita in receitas_populares %}
+            <div class="subcaixa">
+             <div class="imagem">
+                <img src="{{ receita.foto.url }}" class="card-img-top" alt="">
+                 </div>
+                <div class="txtRec">
+                    <p class="tituloRec">{{ receita.titulo }}
+                    <a href="{% url 'detalhe_receita' receita.id %}" class="titorec" >Veja Mais Aqui!</a></p>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+    <div>
+      <p class="titulo-caixa">Busca de receitas</p>
+      <p class="subtitulo-caixa">Digite os ingredientes disponíveis</p>
+      <p class="subsubtitulo-caixa">(separar ingredientes com vírgulas)</p>
+        <label for="ingredientes"></label><input id="ingredientes" type="text" />
+      <br>
+      <table class="testetab">
+        <tr>
+          <th style="width:70%"><label class="labesq">Valor Energético:</label></th>
+          <th><input type="number" class="impnum"  />Quilocalorias (KCal)</th>
+        </tr>
+        <tr>
+          <th><label class="labesq">Carboidratos:</label></th>
+          <th><input type="number" class="impnum" />Gramas (g)</th>
+        </tr>
+        <tr>
+          <th><label class="labesq">Proteínas:</label></th>
+          <th><input type="number" class="impnum" />Gramas (g)</th>
+        </tr>
+        <tr>
+          <th><label class="labesq">Fibras:</label></th>
+          <th><input type="number" class="impnum" />Gramas (g)</th>
+        </tr>
+        <tr>
+          <th><label class="labesq">Sódio:</label></th>
+          <th><input type="number" class="impnum" />Miligramas (mg)</th>
+        </tr>
+      </table>
+      <button class="butpos" type="button">Buscar</button>
+      <p class="descbut">(Para não filtrar um elemento, deixe em branco)</p>
+    </div>
+  </div>
+
+</body>
+</html>
