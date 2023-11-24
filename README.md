@@ -4,6 +4,7 @@ Busque a receita perfeita para fazer hoje.
 Como instalar:
 
 pip install django
+
 pip install pillow
 
 python3 manage.py runserver
