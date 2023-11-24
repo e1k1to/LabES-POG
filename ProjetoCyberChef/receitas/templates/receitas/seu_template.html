@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas Filtradas</title>
+</head>
+<body>
+    {% include 'receitas/header.html' %}
+    <h1>Receitas Filtradas por Valores Mínimos</h1>
+
+    {% if receitas_filtradas %}
+        <ul>
+            {% for receita in receitas_filtradas %}
+                <li>{{ receita.nome }} - Calorias: {{ receita.calorias }}, Fibras: {{ receita.fibras }}, Carboidratos: {{ receita.carboidratos }}, Proteínas: {{ receita.proteinas }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhuma receita encontrada com os valores mínimos especificados.</p>
+    {% endif %}
+</body>
+</html>

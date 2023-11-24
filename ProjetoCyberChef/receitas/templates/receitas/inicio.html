@@ -3,10 +3,6 @@
 <html lang="en">
 <meta charset="UTF-8">
 <style>
-
-.titorec {
-	font-size: 30px;
-}
 .cabecalho {
 	background-color: #ffeab5;
 	text-align: left;
@@ -115,13 +111,7 @@ img {
 }
 
 .tituloRec {
-	padding-top:30px;
-	font-size: 40px;
-}
-
-.descricaoRec {
-	font-size: 18px;
-	margin-top: -10px;
+	font-size: 30px;
 }
 
 #ingredientes {
@@ -176,13 +166,6 @@ label {
 	font-style: italic;
 	text-align: center;
 }
-
-.fill-div {
-	display: block;
-	width:100%;
-	height:100%;
-	text-decoration: none;
-}
 </style>
 <body>
   <div class="cabecalho">
@@ -190,7 +173,7 @@ label {
     <nav class="navb">
       <ul>
         <li><a href="/">Home .</a></li>
-        <li><a href="/">Buscar Receitas .</a></li>
+        <li><a href="/todas">Buscar Receitas .</a></li>
         <li><a href="/todas">Todas Receitas .</a></li>
         <li><a href="/enviar">Enviar Receitas .</a></li>
         <li><a href="/contato">Fale conosco</a></li>
@@ -203,51 +186,53 @@ label {
         <p class="titulo-caixa">Receitas populares da semana</p>
         {% for receita in receitas_populares %}
             <div class="subcaixa">
+           <div class="caixa-receita">
              <div class="imagem">
                 <img src="{{ receita.foto.url }}" class="card-img-top" alt="">
                  </div>
                 <div class="txtRec">
                     <p class="tituloRec">{{ receita.titulo }}
-                    <a href="{% url 'detalhe_receita' receita.id %}" class="titorec" ><br>Detalhes</a></p>
+                        <br>
+                        <br>
+                    <a href="{% url 'detalhe_receita' receita.id %}">Detalhes da Receita</a></p>
                 </div>
+            </div>
             </div>
             <br>
         {% endfor %}
     </div>
     <div>
+        <form action="{% url 'filtrar' %}" method="GET">
       <p class="titulo-caixa">Busca de receitas</p>
       <p class="subtitulo-caixa">Digite os ingredientes disponíveis</p>
       <p class="subsubtitulo-caixa">(separar ingredientes com vírgulas)</p>
-        <label for="ingredientes"></label><input id="ingredientes" type="text" />
+        <label for="ingredientes"></label><input id="ingredientes" name="ingredientes" type="text" />
       <br>
-      <table class="testetab">
-        <tr>
-          <th style="width:70%"><label class="labesq">Valor Energético:</label></th>
-          <th><input type="number" class="impnum"  />Quilocalorias (KCal)</th>
-        </tr>
-        <tr>
-          <th><label class="labesq">Carboidratos:</label></th>
-          <th><input type="number" class="impnum" />Gramas (g)</th>
-        </tr>
-        <tr>
-          <th><label class="labesq">Proteínas:</label></th>
-          <th><input type="number" class="impnum" />Gramas (g)</th>
-        </tr>
-        <tr>
-          <th><label class="labesq">Fibras:</label></th>
-          <th><input type="number" class="impnum" />Gramas (g)</th>
-        </tr>
-        <tr>
-          <th><label class="labesq">Sódio:</label></th>
-          <th><input type="number" class="impnum" />Miligramas (mg)</th>
-        </tr>
-      </table>
-	  <a href="{% url 'filtrar'%}">
-	  <button class="butpos" type="button"> Buscar
-	</button>
-	  </a>
-
+        <table class="testetab">
+            <tr>
+                <th style="width:70%"><label class="labesq">Valor Energético:</label></th>
+                <th><input type="number" class="impnum" name="calorias">Quilocalorias (KCal)</th>
+            </tr>
+            <tr>
+                <th><label class="labesq">Carboidratos:</label></th>
+                <th><input type="number" class="impnum" name="carboidrato">Gramas (g)</th>
+            </tr>
+            <tr>
+                <th><label class="labesq">Proteínas:</label></th>
+                <th><input type="number" class="impnum" name="proteina">Gramas (g)</th>
+            </tr>
+            <tr>
+                <th><label class="labesq">Fibras:</label></th>
+                <th><input type="number" class="impnum" name="fibra">Gramas (g)</th>
+            </tr>
+            <tr>
+                <th><label class="labesq">Sódio:</label></th>
+                <th><input type="number" class="impnum" name="sodio">Miligramas (mg)</th>
+            </tr>
+        </table>
+      <button class="butpos" type="submit">Buscar</button>
       <p class="descbut">(Para não filtrar um elemento, deixe em branco)</p>
+        </form>
     </div>
   </div>
 

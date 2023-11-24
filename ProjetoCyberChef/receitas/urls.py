@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import ReceitaListView
 
 
 urlpatterns = [
@@ -8,7 +9,7 @@ urlpatterns = [
     path('todas/', views.todas_receitas, name='todas_receitas'),
     path('enviar/', views.enviar_receita, name='enviar'),
     path('contato/', views.fale_conosco, name='contato'),
-    path('filtrar/', views.filtar_receitas, name='filtrar'),
+    path('filtrar/', ReceitaListView.as_view(), name='filtrar'),
 ]
 
 

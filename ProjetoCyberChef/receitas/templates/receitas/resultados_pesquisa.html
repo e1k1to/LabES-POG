@@ -1,0 +1,104 @@
+<html lang="en">
+<meta charset="UTF-8">
+<style>
+body {
+	margin:0;
+}
+
+li {
+	display: inline-block;
+
+}
+
+a {
+	text-decoration: none;
+}
+
+.flex-cont > div {
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 10px;
+	height: 600px;
+	width: 100%;
+	background-color: #fff4e2;
+}
+
+.titulo-caixa {
+	font-size: 40px;
+	font-weight: 300;
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.subcaixa {
+	background-color: #fff0c9;
+	height: 175px;
+	width: 97.5%;
+	font-size: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+}
+.caixa-receita {
+	display: flex;
+	height: auto;
+	width: auto;
+}
+
+.imagem {
+	height: 175px;
+	float: left;
+}
+
+img {
+	height: 90%;
+	border-radius: 30px;
+	margin: 8px;
+	vertical-align: middle;
+	width: auto;
+}
+
+.txtRec {
+	width: 100%;
+	text-align: center;
+}
+
+.tituloRec {
+	font-size: 30px;
+}
+
+label {
+	display: flex;
+}
+    /* Adicione outras regras de estilo conforme necessário */
+    .subcaixa {
+        margin-bottom: 20px; /* Adapte conforme necessário para ajustar o espaçamento entre as receitas */
+    }
+
+</style>
+<body>
+{% include 'receitas/header.html' %}
+<div>
+    <p class="titulo-caixa">Resultados da Pesquisa</p>
+    <br>
+    <ul>
+        {% for receita in object_list %}
+            <div class="subcaixa">
+           <div class="caixa-receita">
+             <div class="imagem">
+                <img src="{{ receita.foto.url }}" class="card-img-top" alt="">
+                 </div>
+                <div class="txtRec">
+                    <p class="tituloRec">{{ receita.titulo }}
+                        <br>
+                        <br>
+                    <a href="{% url 'detalhe_receita' receita.id %}">Detalhes da Receita</a></p>
+                </div>
+            </div>
+            </div>
+            <br>
+        {% endfor %}
+    </ul>
+</div>
+</body>
